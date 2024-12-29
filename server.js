@@ -32,9 +32,9 @@ app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/user", userRoute);
 app.use("/api/v1/appointment", appointmentRoutes); 
 
-app.get("/", (req, res) => {
-  res.send("Server is running");
-});
+// app.get("/", (req, res) => {
+//   res.send("Server is running");
+// });
 
 app.use(express.static(path.join(__dirname, "./client/dist")))
 
