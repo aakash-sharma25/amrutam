@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import { Box, Typography } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import axios from "axios";
@@ -24,7 +24,7 @@ const Dashboard = () => {
     fetchTransactions();
   }, []);
 
-  // Columns for the Data Grid
+  
   const columns = [
     // { field: "id", headerName: "ID", width: 100 },
     {
