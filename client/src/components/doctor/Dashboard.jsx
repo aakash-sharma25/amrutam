@@ -17,7 +17,7 @@ const Dashboard = () => {
         setTransactions(data?.appointments);
         setBalance(data?.balance);
       } catch (error) {
-        console.log("Error fetching transactions:", error);
+        alert(error?.response?.data?.message);
       }
     };
 

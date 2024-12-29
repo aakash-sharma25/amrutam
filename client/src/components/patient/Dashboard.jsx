@@ -16,7 +16,7 @@ const Dashboard = () => {
         setAppointments(data?.appointments);
         setBalance(data?.balance);
       } catch (error) {
-        console.log("Error fetching data:", error);
+        alert(error?.response?.data?.message);
       }
     };
 

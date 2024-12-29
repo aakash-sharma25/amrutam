@@ -26,7 +26,7 @@ const Register = () => {
       // console.log(data);
       navigate("/login");
     } catch (error) {
-      console.log(error);
+      alert(error?.response?.data?.message);
     }
   };
 
