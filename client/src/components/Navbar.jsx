@@ -19,7 +19,7 @@ const Navbar = () => {
     <AppBar position="static" color="primary">
       <Toolbar>
         <Typography variant="h6" sx={{ flexGrow: 1 }}>
-          My Application
+          Amrutam
         </Typography>
         <Box>
           {userRole === "patient" && (

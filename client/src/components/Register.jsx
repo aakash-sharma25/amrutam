@@ -23,7 +23,7 @@ const Register = () => {
 
     try {
       const { data } = await axios.post("/api/v1/auth/register", formData);
-      console.log(data);
+      // console.log(data);
       navigate("/login");
     } catch (error) {
       console.log(error);
