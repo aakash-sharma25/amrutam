@@ -20,7 +20,7 @@ const Login = () => {
 
     try {
       const { data } = await axios.post("/api/v1/auth/login", formData);
-      console.log(data);
+      // console.log(data);
       localStorage.setItem("user-role", data?.role);
       localStorage.setItem("user-id", data?.id);
       if (data?.role === "patient") {
@@ -35,42 +35,52 @@ const Login = () => {
 
   return (
     <Box
-      component="form"
-      onSubmit={handleSubmit}
       sx={{
-        maxWidth: 400,
-        margin: "auto",
-        padding: 4,
-        boxShadow: 2,
-        borderRadius: 2,
+        minHeight: "100vh",
+        minWidth: "100vw",
+        alignItems: "center",
+        justifyContent: "center",
+        display: "flex",
       }}
     >
-      <Typography variant="h5" align="center" gutterBottom>
-        Login
-      </Typography>
-      <TextField
-        label="Email"
-        name="email"
-        value={formData.email}
-        onChange={handleChange}
-        type="email"
-        fullWidth
-        required
-        margin="normal"
-      />
-      <TextField
-        label="Password"
-        name="password"
-        value={formData.password}
-        onChange={handleChange}
-        type="password"
-        fullWidth
-        required
-        margin="normal"
-      />
-      <Button type="submit" variant="contained" color="primary" fullWidth>
-        Login
-      </Button>
+      <Box
+        component="form"
+        onSubmit={handleSubmit}
+        sx={{
+          maxWidth: 400,
+          margin: "auto",
+          padding: 4,
+          boxShadow: 2,
+          borderRadius: 2,
+        }}
+      >
+        <Typography variant="h5" align="center" gutterBottom>
+          Login
+        </Typography>
+        <TextField
+          label="Email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          type="email"
+          fullWidth
+          required
+          margin="normal"
+        />
+        <TextField
+          label="Password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+          type="password"
+          fullWidth
+          required
+          margin="normal"
+        />
+        <Button type="submit" variant="contained" color="primary" fullWidth>
+          Login
+        </Button>
+      </Box>
     </Box>
   );
 };

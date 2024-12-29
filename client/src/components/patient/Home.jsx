@@ -13,7 +13,7 @@ const Home = () => {
         const response = await axios.get("/api/v1/user/all-doctors");
         setDoctors(response?.data?.doctor);
       } catch (error) {
-        console.error("Error fetching doctors:", error);
+        console.log("Error fetching doctors:", error);
       }
     };
 

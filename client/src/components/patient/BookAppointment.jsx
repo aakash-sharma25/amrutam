@@ -32,7 +32,7 @@ const BookAppointment = () => {
       setDoctorData(response?.data?.doctor);
       setisDiscountApplicable(response?.data?.isFirstTime);
     } catch (error) {
-      console.error("Error fetching doctor details:", error);
+      console.log("Error fetching doctor details:", error);
     } finally {
       setLoading(false);
     }
