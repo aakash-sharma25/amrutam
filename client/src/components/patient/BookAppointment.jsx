@@ -5,7 +5,7 @@ import axios from "axios";
 
 const BookAppointment = () => {
   const { id } = useParams();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [doctorData, setDoctorData] = useState(null);
   const [isDiscountApplicable, setisDiscountApplicable] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -18,9 +18,9 @@ const BookAppointment = () => {
         fees: isDiscountApplicable ? doctorData.fees * 0.9 : doctorData.fees,
         isDiscount: isDiscountApplicable,
       });
-      navigate("/patient-dashboard")
+      navigate("/patient-dashboard");
     } catch (error) {
-      console.log(error);
+      alert(error.response.data.message);
     }
   };
 

@@ -7,7 +7,7 @@ exports.bookAppointment = async (req, res) => {
   try {
     const { doctorId, patientId, fees, isDiscount } = req.body;
 
-    if (!doctorId || patientId || fees || isDiscount) {
+    if (!doctorId || !patientId || !fees || !isDiscount) {
       return res.status(400).json({
         success: false,
         message: "all field is required",
