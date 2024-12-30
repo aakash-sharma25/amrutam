@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { TextField, Button, MenuItem, Box, Typography } from "@mui/material";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
@@ -30,6 +30,12 @@ const Register = () => {
     }
   };
 
+  useEffect(() => {
+    const user = localStorage.getItem("user-id");
+    if (user) {
+      navigate("/" + localStorage.getItem("user-role"));
+    }
+  }, []);
   return (
     <Box
       component="form"

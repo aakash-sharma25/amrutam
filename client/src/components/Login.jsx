@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   TextField,
   Button,
@@ -56,10 +56,16 @@ const Login = () => {
     }
   };
 
+  useEffect(() => {
+    const user = localStorage.getItem("user-id");
+    if (user) {
+      navigate("/" + localStorage.getItem("user-role"));
+    }
+  }, []);
   return (
     <Box
       sx={{
-        minHeight: "100vh",
+        minHeight: "90vh",
         minWidth: "100vw",
         alignItems: "center",
         justifyContent: "center",
