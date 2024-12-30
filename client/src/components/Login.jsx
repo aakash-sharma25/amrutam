@@ -1,5 +1,11 @@
 import { useState } from "react";
-import { TextField, Button, Box, Typography } from "@mui/material";
+import {
+  TextField,
+  Button,
+  Box,
+  Typography,
+  getImageListItemBarUtilityClass,
+} from "@mui/material";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -15,12 +21,29 @@ const Login = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
+  const handleSubmit = async (type) => {
+    // e.preventDefault();
+    let loginCredential = {
+      email: "",
+      password: "",
+    };
     try {
-      const { data } = await axios.post("/api/v1/auth/login", formData);
-      // console.log(data);
+      if (type === "doctor") {
+        loginCredential = {
+          email: "doctor@doctor.com",
+          password: "guestdoctor",
+        };
+      } else if (type === "patient") {
+        loginCredential = {
+          email: "user@user.com",
+          password: "guestpatient",
+        };
+      } else {
+        loginCredential = formData;
+      }
+
+      const { data } = await axios.post("/api/v1/auth/login", loginCredential);
+
       localStorage.setItem("user-role", data?.role);
       localStorage.setItem("user-id", data?.id);
       if (data?.role === "patient") {
@@ -77,9 +100,34 @@ const Login = () => {
           required
           margin="normal"
         />
-        <Button type="submit" variant="contained" color="primary" fullWidth>
-          Login
-        </Button>
+        <Box display={"flex"} flexDirection={"column"} gap={3}>
+          <Button
+            onClick={() => handleSubmit()}
+            variant="contained"
+            color="primary"
+            fullWidth
+          >
+            Login
+          </Button>
+          <Button
+            variant="contained"
+            size="sm"
+            onClick={() => handleSubmit("patient")}
+            color="success"
+            fullWidth
+          >
+            Login as guest patient
+          </Button>
+          <Button
+            variant="contained"
+            size="sm"
+            onClick={() => handleSubmit("doctor")}
+            color="success"
+            fullWidth
+          >
+            Login as guest doctor
+          </Button>
+        </Box>
       </Box>
     </Box>
   );
